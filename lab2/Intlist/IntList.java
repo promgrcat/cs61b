@@ -51,6 +51,7 @@ public class IntList {
         if (L == null) {
             return null;
         }
+        // res ptr refer to same address.
         IntList res = new IntList(L.first * L.first, null);
         IntList ptr = res;
         L = L.rest;
@@ -82,7 +83,12 @@ public class IntList {
 
     public static IntList dcatenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+
+        if (A == null) {
+            return B;
+        }
+        A.rest = dcatenate(A.rest, B);
+        return A;
     }
 
     /**
@@ -91,7 +97,15 @@ public class IntList {
      */
     public static IntList catenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+        IntList p = new IntList(A.first, null);
+        IntList res = p;
+        while (A.rest != null) {
+            res.rest = new IntList(A.rest.first, null);
+            res = res.rest;
+            A = A.rest;
+        }
+        res.rest = B;
+        return res;
     }
 
 
