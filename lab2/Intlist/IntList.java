@@ -101,11 +101,12 @@ public class IntList {
         IntList res = p;
         while (A.rest != null) {
             res.rest = new IntList(A.rest.first, null);
-            res = res.rest;
             A = A.rest;
+            res = res.rest;
         }
+        //there should be res.rest = B because p saves the head point, res saves the last point.
         res.rest = B;
-        return res;
+        return p;
     }
 
 
